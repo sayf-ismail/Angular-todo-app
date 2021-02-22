@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from './../../models/Todo';
+import { TodoService } from './../../services/todo.service'
 
 @Component({
   selector: 'app-todos',
@@ -9,22 +10,16 @@ import { Todo } from './../../models/Todo';
 export class TodosComponent implements OnInit {
 
   todos:Todo[];
+  public todoContent = '';
 
   inputTodo:string = ''
 
-  constructor() { }
+  constructor(private todoService: TodoService) {
+    this.todoContent = '';
+  }
 
   ngOnInit(): void {
-    this.todos = [
-      {
-        content: 'First todo',
-        completed: false
-      },
-      {
-        content: 'Second todo',
-        completed: false
-      }
-    ]
+    this.getTodos();
   }
 
   toggleDone (id:number) {
@@ -39,13 +34,12 @@ export class TodosComponent implements OnInit {
     this.todos = this.todos.filter((v, i) => i !== id);
   }
 
-  addTodo () {
-    this.todos.push({
-      content: this.inputTodo,
-      completed: false
-    });
+  getTodos(): void {
+    this.todos = this.todoService.getTodos();
+  }
 
-    this.inputTodo = "";
+  addTodo(): void {
+    this.todoService.addTodo(this.todoContent);
   }
 
 }
