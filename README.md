@@ -16,7 +16,9 @@ The aim was to create a To-do list SPA that could retain data even after client 
 - A service called TodoService was created as it creates a separate thread from the main thread, and is an intermediary between the browser and the data stored in localStorage.
 
 ## Challenges faced
-- Guidance for nested lists is advanced, making use of ng- and ng-
+- Creating a nested list requires more research and experimenting.
+- The delete function is not working as intended.
+- The todo list page needs to be refreshed to view latest additions.
 
 ## Conclusion
 Overall this was a fun exercise as I got to dive into building a simple SPA with interesting features. I think my learning of Typescript was eased by some online courses, such as Flutter and Dart, which uses a declarative form of programming. I will definitely explore Angular and Typescript further in the near future!
